@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { useRouter } from "next/navigation";
-import { useCurrentUser } from "@/hooks/use-current-user";
 import axios from "axios";
 import TextareaAutosize from 'react-textarea-autosize';
 import { ImageUpload } from "@/components/ui/image-upload";
@@ -34,18 +33,20 @@ export const NewPostForm = () => {
   })
 
   const onSubmit = async (values: z.infer<typeof PostSchema>) => {
-    setError("")
-    setSuccess("")
+    startTransition(async () => {
+      setError("")
+      setSuccess("")
 
-    try {
-      const response = await axios.post('api/posts', values);
+      try {
+        const response = await axios.post('api/posts', values);
 
-      if (response.status === 200) {
-        router.push(`post/${response.data.newPost.id}`);
+        if (response.status === 200) {
+          router.push(`post/${response.data.newPost.id}`);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
+    })
   }
 
   return (
