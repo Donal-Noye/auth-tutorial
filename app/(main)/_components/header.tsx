@@ -22,7 +22,7 @@ export const Header = () => {
           <Logo />
           {status === "authenticated" ? (
             <Button asChild>
-              <Link className="flex items-center gap-x-2" href="/dashboard">
+              <Link className="flex items-center gap-x-4" href="/dashboard">
                 Go to Dashboard
                 <Avatar className="w-6 h-6">
                   <AvatarImage className="object-cover" src={user?.image || ""} />

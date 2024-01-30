@@ -15,7 +15,7 @@ export const Header = ({ label, subLabel }: HeaderProps) => {
         src="/logo.png"
         alt="Write Space"
       />
-      <h1 className="text-3xl font-semibold">
+      <h1 className="text-3xl font-semibold text-center">
         {label}
       </h1>
       {subLabel && <p className="text-tertiary text-sm mt-3">

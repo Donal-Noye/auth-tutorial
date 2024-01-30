@@ -5,9 +5,10 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { getPostById } from "@/data/post";
 import { format } from "date-fns";
+import { BeatLoader } from "react-spinners";
 
 export const FeaturedPostCard = async () => {
-  const post = await getPostById("clrytkdxe0003gj0v1ynqdppt")
+  const post = await getPostById("clrytkdxe0003gj0v1ynqdppt");
 
   return (
     <Link
@@ -17,6 +18,7 @@ export const FeaturedPostCard = async () => {
       <Image
         className="hidden sm:block w-full h-full brightness-50 group-hover:brightness-[.45] transition"
         fill
+        loading="lazy"
         objectFit="cover"
         src={post?.image!}
         alt=""
@@ -24,9 +26,10 @@ export const FeaturedPostCard = async () => {
       <Image
         className="mb-5 block sm:hidden w-full h-full rounded-2xl brightness-50 group-hover:brightness-[.45] transition object-cover"
         width={0}
+        loading="lazy"
         height={240}
         sizes="100vw"
-        style={{ width: '100%', height: "240px" }}
+        style={{ width: "100%", height: "240px" }}
         src={post?.image!}
         alt=""
       />
@@ -61,5 +64,5 @@ export const FeaturedPostCard = async () => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
