@@ -37,7 +37,9 @@ export const MobileNavigation = () => {
         )}
       >
         <Navigation />
-        <UserButton />
+        <div className="flex items-start flex-wrap-reverse gap-y-2 justify-between mt-auto pt-4 border-t dark:border-t-secondary">
+          <UserButton />
+        </div>
       </div>
     </div>
   );
