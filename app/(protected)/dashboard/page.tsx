@@ -3,6 +3,11 @@ import { Heading } from "@/app/(protected)/dashboard/_components/heading";
 import { CreateButton } from "@/app/(protected)/dashboard/_components/create-button";
 import { PencilLine } from "lucide-react";
 import { RecentPosts } from "@/app/(protected)/dashboard/_components/recent-posts";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+};
 
 const DashboardPage = () => {
   return (
