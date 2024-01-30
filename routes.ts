@@ -1,5 +1,6 @@
 export const publicRoutes = [
   "/",
+  "/post/:id",
   "/auth/new-verification"
 ];
 
