@@ -24,7 +24,7 @@ export const LoginButton = ({
   if (mode === "modal") {
     return (
       <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger asChild={asChild}>
           {children}
         </DialogTrigger>
         <DialogContent className="p-0 w-auto bg-transparent border-none">

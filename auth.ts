@@ -3,7 +3,7 @@ import authConfig from "@/auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
 import { getUserById } from "@/data/user";
-import { UserRole } from "@prisma/client";
+import { UserRole, UserTheme } from "@prisma/client";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 import { getAccountByUserId } from "@/data/account";
 
@@ -12,7 +12,6 @@ export const {
   auth,
   signIn,
   signOut,
-  update
 } = NextAuth({
   pages: {
     signIn: "/auth/login",
@@ -55,6 +54,14 @@ export const {
         session.user.role = token.role as UserRole;
       }
 
+      if (token.theme && session.user) {
+        session.user.theme = token.theme as UserTheme;
+      }
+
+      if (token.image && session.user) {
+        session.user.image = token.image as string;
+      }
+
       if (session.user) {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean
       }
@@ -80,6 +87,8 @@ export const {
       token.name = existingUser.name
       token.email = existingUser.email
       token.role = existingUser.role;
+      token.theme = existingUser.theme;
+      token.image = existingUser.image;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
 
       return token;

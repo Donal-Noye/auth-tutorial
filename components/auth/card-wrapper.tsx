@@ -8,6 +8,7 @@ import { BackButton } from "@/components/auth/back-button";
 interface CardWrapperProps {
   children: React.ReactNode;
   headerLabel: string;
+  headerSubLabel?: string;
   backButtonLabel: string;
   backButtonHref: string;
   showSocial?: boolean;
@@ -18,12 +19,16 @@ export const CardWrapper = ({
   backButtonHref,
   backButtonLabel,
   headerLabel,
+  headerSubLabel,
   showSocial
 }: CardWrapperProps) => {
   return (
-    <Card className="w-[400px] shadow-md">
+    <Card className="w-[400px] shadow-none border-none">
       <CardHeader>
-        <Header label={headerLabel} />
+        <Header
+          label={headerLabel}
+          subLabel={headerSubLabel}
+        />
       </CardHeader>
       <CardContent>
         {children}

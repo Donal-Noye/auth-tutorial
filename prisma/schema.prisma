@@ -13,6 +13,12 @@ enum UserRole {
   USER
 }
 
+enum UserTheme {
+  LIGHT
+  DARK
+  SYSTEM
+}
+
 model User {
   id                    String                 @id @default(cuid())
   name                  String?
@@ -21,9 +27,11 @@ model User {
   image                 String?
   password              String?
   role                  UserRole               @default(USER)
+  theme                 UserTheme              @default(SYSTEM)
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  posts                 Post[]
 }
 
 model Account {
@@ -79,4 +87,14 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  image     String?
+  userEmail String?
+  user      User?    @relation(fields: [userEmail], references: [email])
+  createdAt DateTime @default(now())
 }

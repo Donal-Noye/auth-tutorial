@@ -5,7 +5,11 @@
 html,
 body,
 :root {
-   height: 100%;
+   @apply h-full
+}
+
+body {
+   @apply text-primary bg-white dark:bg-dark
 }
 
 @layer base {
@@ -19,10 +23,11 @@ body,
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 222.2 47.4% 11.2%;
+    /*--primary: 222.2 47.4% 11.2%;*/
+    --primary: 220 30% 8%;
     --primary-foreground: 210 40% 98%;
  
-    --secondary: 210 40% 96.1%;
+    --secondary: 220 10% 94%;
     --secondary-foreground: 222.2 47.4% 11.2%;
  
     --muted: 210 40% 96.1%;
@@ -51,10 +56,11 @@ body,
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
  
-    --primary: 210 40% 98%;
+    /*--primary: 210 40% 98%;*/
+    --primary: 240 4% 97%;
     --primary-foreground: 222.2 47.4% 11.2%;
  
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 220 20% 18%;
     --secondary-foreground: 210 40% 98%;
  
     --muted: 217.2 32.6% 17.5%;
@@ -81,6 +87,91 @@ body,
   }
 }
 
-.bg-gradient {
-   @apply bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800
+.truncate-2 {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   align-self: stretch;
+   overflow: hidden;
+}
+
+.burger-button {
+   width: 22px;
+   height: 17px;
+   position: relative;
+   -webkit-transform: rotate(0deg);
+   -moz-transform: rotate(0deg);
+   -o-transform: rotate(0deg);
+   transform: rotate(0deg);
+   -webkit-transition: .5s ease-in-out;
+   -moz-transition: .5s ease-in-out;
+   -o-transition: .5s ease-in-out;
+   transition: .5s ease-in-out;
+}
+
+.burger-button span {
+   display: block;
+   position: absolute;
+   height: 2px;
+   width: 100%;
+   background: #CECFD2;
+   border-radius: 9px;
+   opacity: 1;
+   left: 0;
+   -webkit-transform: rotate(0deg);
+   -moz-transform: rotate(0deg);
+   -o-transform: rotate(0deg);
+   transform: rotate(0deg);
+   -webkit-transition: .25s ease-in-out;
+   -moz-transition: .25s ease-in-out;
+   -o-transition: .25s ease-in-out;
+   transition: .25s ease-in-out;
+}
+
+.burger-button span:nth-child(1) {
+   top: 0px;
+}
+
+.burger-button span:nth-child(2),
+.burger-button span:nth-child(3) {
+   top: 8px;
+}
+
+.burger-button span:nth-child(4) {
+   top: 16px;
+}
+
+.burger-button.open span:nth-child(1) {
+   top: 18px;
+   width: 0%;
+   left: 50%;
+}
+
+.burger-button.open span:nth-child(2) {
+   -webkit-transform: rotate(45deg);
+   -moz-transform: rotate(45deg);
+   -o-transform: rotate(45deg);
+   transform: rotate(45deg);
+}
+
+.burger-button.open span:nth-child(3) {
+   -webkit-transform: rotate(-45deg);
+   -moz-transform: rotate(-45deg);
+   -o-transform: rotate(-45deg);
+   transform: rotate(-45deg);
+}
+
+.burger-button.open span:nth-child(4) {
+   top: 18px;
+   width: 0%;
+   left: 50%;
+}
+
+
+.form__item {
+   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-start pb-5 border-b border-secondary
+}
+
+.form__item label {
+   padding-top: 10px;
 }

@@ -1,13 +1,21 @@
 import * as z from "zod";
-import { UserRole } from "@prisma/client";
+import { UserRole, UserTheme } from "@prisma/client";
+
+export const PostSchema = z.object({
+  title: z.string().min(1),
+  content: z.string().min(1),
+  image: z.string().min(1)
+})
 
 export const SettingsSchema = z.object({
   name: z.optional(z.string()),
   isTwoFactorEnabled: z.optional(z.boolean()),
   role: z.enum([UserRole.ADMIN, UserRole.USER]),
+  theme: z.enum([UserTheme.LIGHT, UserTheme.DARK, UserTheme.SYSTEM]),
   email: z.optional(z.string().email()),
   password: z.optional(z.string().min(6)),
-  newPassword: z.optional(z.string().min(6))
+  newPassword: z.optional(z.string().min(6)),
+  image: z.optional(z.string())
 })
   .refine(data => {
     if (data.password && !data.newPassword) {

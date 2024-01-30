@@ -1,4 +1,5 @@
-import { Navbar } from "@/app/(protected)/_components/navbar";
+import { Sidebar } from "@/app/(protected)/_components/sidebar";
+import { MobileHeader } from "@/app/(protected)/_components/mobile-header";
 
 interface ProtectedLayoutProps {
   children: React.ReactNode
@@ -6,9 +7,14 @@ interface ProtectedLayoutProps {
 
 const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
   return (
-    <div className="h-full w-full flex flex-col gap-y-10 items-center justify-center bg-gradient">
-      <Navbar />
-      {children}
+    <div className="h-full">
+      <Sidebar />
+      <MobileHeader />
+      <main className="w-full md:pl-[200px] lg:pl-[280px] bg-white dark:bg-dark">
+        <div className="pt-24 md:pt-8 pb-12 px-4 sm:px-6 md:px-8">
+          {children}
+        </div>
+      </main>
     </div>
   );
 };
